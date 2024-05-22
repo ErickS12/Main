@@ -10,6 +10,10 @@ public class Main {
     private final List<Mesa> mesas;
     private final List<Empleado> empleados;
     private final Menu menu;
+    
+    private static final int maxMeseros = 4;
+    private static final int maxCocineros = 4;
+    private static final int maxMesas = 5;
 
     public Main(String nombre, int telefono) {
         this.nombre = nombre;
@@ -46,6 +50,11 @@ public class Main {
     }
 
     public void registrarMesa() {
+        if(mesas.size() >= maxMesas){
+        System.out.println("Ya se han registrado el número máximo de mesas (" + maxMesas + ").");
+        return;
+    }
+
         Mesa mesa = new Mesa(0, "", 0);
         mesa.registrarMesa();
         mesas.add(mesa);
@@ -86,12 +95,22 @@ public class Main {
     }
 
     public void contratarMesero() {
+        long countMeseros = empleados.stream().filter(e -> e instanceof Mesero).count();
+        if (countMeseros >= maxMeseros) {
+            System.out.println("Ya se han contratado el número máximo de meseros (" + maxMeseros + ").");
+            return;
+        }
         Mesero mesero = new Mesero("", 0, "", 0, "", 0, 0, "", 0);
         mesero.registrarMesero();
         empleados.add(mesero);
     }
 
     public void contratarCocinero() {
+        long countCocineros = empleados.stream().filter(e -> e instanceof Cocinero).count();
+        if (countCocineros >= maxCocineros) {
+            System.out.println("Ya se han contratado el número máximo de cocineros (" + maxCocineros + ").");
+            return;
+        }
         Cocinero cocinero = new Cocinero("", 0, "", 0, "", 0, "", "", 0);
         cocinero.registrarCocinero();
         empleados.add(cocinero);
