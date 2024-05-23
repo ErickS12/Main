@@ -1,6 +1,7 @@
 package com.mycompany.main;
 
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public abstract class Empleado {
     private String nombre;
@@ -8,9 +9,9 @@ public abstract class Empleado {
     private String genero;
     private double salario;
     private String horario;
-    private double numTelefono;
+    private String numTelefono;
 
-    public Empleado(String nombre, int edad, String genero, double salario, String horario, double numTelefono) {
+    public Empleado(String nombre, int edad, String genero, double salario, String horario, String numTelefono) {
         this.nombre = nombre;
         this.edad = edad;
         this.genero = genero;
@@ -43,7 +44,7 @@ public abstract class Empleado {
         System.out.println("Ingrese el horario del empleado (maturino/vespertino):");
         setHorario(scanner.nextLine());
         System.out.println("Ingrese el número de teléfono del empleado:");
-        setNumTelefono(scanner.nextDouble());
+        setNumTelefono(scanner.nextLine());
     }
 
 public void editarEmpleado() {
@@ -60,43 +61,49 @@ public void editarEmpleado() {
         System.out.println("6. Editar número de teléfono");
         System.out.println("7. Salir");
         System.out.print("Seleccione una opción: ");
-        int opcion = scanner.nextInt();
-        scanner.nextLine(); // Consumir la nueva línea después de nextInt
 
-        switch (opcion) {
-            case 1:
-                System.out.println("Editar nombre del empleado (actual: " + getNombre() + "):");
-                setNombre(scanner.nextLine());
-                break;
-            case 2:
-                System.out.println("Editar edad del empleado (actual: " + getEdad() + "):");
-                setEdad(scanner.nextInt());
-                scanner.nextLine(); // Consumir la nueva línea después de nextInt
-                break;
-            case 3:
-                System.out.println("Editar género del empleado (actual: " + getGenero() + "):");
-                setGenero(scanner.nextLine());
-                break;
-            case 4:
-                System.out.println("Editar salario quincenal del empleado (actual: " + getSalario() + "):");
-                setSalario(scanner.nextDouble());
-                scanner.nextLine(); // Consumir la nueva línea después de nextDouble
-                break;
-            case 5:
-                System.out.println("Editar horario del empleado (maturino/vespertino) (actual: " + getHorario() + "):");
-                setHorario(scanner.nextLine());
-                break;
-            case 6:
-                System.out.println("Editar número de teléfono del empleado (actual: " + getNumTelefono() + "):");
-                setNumTelefono(scanner.nextInt());
-                scanner.nextLine(); // Consumir la nueva línea después de nextInt
-                break;
-            case 7:
-                salir = true;
-                break;
-            default:
-                System.out.println("Opción inválida. Por favor, seleccione una opción válida.");
-                break;
+        try {
+            int opcion = scanner.nextInt();
+            scanner.nextLine(); // Consumir la nueva línea después de nextInt
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("Editar nombre del empleado (actual: " + getNombre() + "):");
+                    setNombre(scanner.nextLine());
+                    break;
+                case 2:
+                    System.out.println("Editar edad del empleado (actual: " + getEdad() + "):");
+                    setEdad(scanner.nextInt());
+                    scanner.nextLine(); // Consumir la nueva línea después de nextInt
+                    break;
+                case 3:
+                    System.out.println("Editar género del empleado (actual: " + getGenero() + "):");
+                    setGenero(scanner.nextLine());
+                    break;
+                case 4:
+                    System.out.println("Editar salario quincenal del empleado (actual: " + getSalario() + "):");
+                    setSalario(scanner.nextDouble());
+                    scanner.nextLine(); // Consumir la nueva línea después de nextDouble
+                    break;
+                case 5:
+                    System.out.println("Editar horario del empleado (maturino/vespertino) (actual: " + getHorario() + "):");
+                    setHorario(scanner.nextLine());
+                    break;
+                case 6:
+                    System.out.println("Editar número de teléfono del empleado (actual: " + getNumTelefono() + "):");
+                    setNumTelefono(scanner.nextLine());
+                    scanner.nextLine(); // Consumir la nueva línea después de nextInt
+                    break;
+                case 7:
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("Opción inválida. Por favor, seleccione una opción válida.");
+                    break;
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Error: Entrada inválida. Por favor, ingrese un valor válido.");
+            scanner.nextLine(); // Limpiar el buffer del escáner
         }
     } while (!salir);
 }
@@ -142,11 +149,11 @@ public void editarEmpleado() {
         this.horario = horario;
     }
     
-    public double getNumTelefono() {
+    public String getNumTelefono() {
         return numTelefono;
     }
 
-    public void setNumTelefono(double numTelefono) {
+    public void setNumTelefono(String numTelefono) {
         this.numTelefono = numTelefono;
     }
 }
