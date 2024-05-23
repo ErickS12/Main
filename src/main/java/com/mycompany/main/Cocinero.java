@@ -1,6 +1,5 @@
 
 package com.mycompany.main;
-
 import java.util.Scanner;
 
 public class Cocinero extends Empleado {
@@ -96,3 +95,7 @@ public void editarCocinero() {
         this.anosDeExperiencia = anosDeExperiencia;
     }
 }
+
+       
+   
+   
