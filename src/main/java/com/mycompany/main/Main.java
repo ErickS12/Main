@@ -162,27 +162,6 @@ public class Main {
             System.out.println("Opción inválida.");
         }
     }
-    
-    public void editarEmpleadoGeneral() {
-    Scanner scanner = new Scanner(System.in);
-    System.out.println("*** Editar información de empleados ***");
-    if (empleados.isEmpty()) {
-        System.out.println("No hay empleados registrados en el restaurante.");
-        return;
-    }
-    System.out.println("Empleados disponibles para editar:");
-    for (int i = 0; i < empleados.size(); i++) {
-        System.out.println((i + 1) + ". " + empleados.get(i).getNombre());
-    }
-    System.out.println("Seleccione el número de empleado que desea editar:");
-    int opcion = scanner.nextInt();
-    if (opcion > 0 && opcion <= empleados.size()) {
-        Empleado empleado = empleados.get(opcion - 1);
-        empleado.editarEmpleado();
-    } else {
-        System.out.println("Opción inválida.");
-    }
-}
 
 public void mostrarMenu() {
     Scanner scanner = new Scanner(System.in);
@@ -200,8 +179,7 @@ public void mostrarMenu() {
         System.out.println("9. Contratar cocinero");
         System.out.println("10. Editar información de meseros");
         System.out.println("11. Editar información de cocineros");
-        System.out.println("12. Editar información de empleados");
-        System.out.println("13. Salir");
+        System.out.println("12. Salir");
         System.out.print("Seleccione una opción: ");
         opcion = scanner.nextInt();
 
@@ -217,11 +195,10 @@ public void mostrarMenu() {
             case 9 -> contratarCocinero();
             case 10 -> editarMeseros();
             case 11 -> editarCocineros();
-            case 12 -> editarEmpleadoGeneral();
-            case 13 -> System.out.println("Saliendo del programa...");
+            case 12 -> System.out.println("Saliendo del programa...");
             default -> System.out.println("Opción inválida. Por favor, seleccione una opción válida.");
         }
-    } while (opcion != 13);
+    } while (opcion != 12);
 }
 
     public static void main(String[] args) {
