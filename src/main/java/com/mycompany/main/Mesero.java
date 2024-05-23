@@ -9,7 +9,7 @@ public class Mesero extends Empleado {
     
     private static int maxMesas = 3;
 
-    public Mesero(String nombre, int edad, String genero, double salario, String horario, int numTelefono, int numDeMesas, String quejas, double propinas) {
+    public Mesero(String nombre, int edad, String genero, double salario, String horario, String numTelefono, int numDeMesas, String quejas, double propinas) {
         super(nombre, edad, genero, salario, horario, numTelefono);
         this.numDeMesas = numDeMesas;
         this.quejas = quejas;
@@ -112,3 +112,4 @@ public void editarMesero() {
         maxMesas = aMaxMesas;
     }
 }
+
