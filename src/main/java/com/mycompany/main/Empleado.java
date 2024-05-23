@@ -1,7 +1,8 @@
 package com.mycompany.main;
 
-import java.util.Scanner;
+
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public abstract class Empleado {
     private String nombre;
@@ -108,6 +109,12 @@ public void editarEmpleado() {
     } while (!salir);
 }
 
+    public void setGenero(String genero) {
+        if (!genero.equalsIgnoreCase("masculino") && !genero.equalsIgnoreCase("femenino")) {
+            throw new IllegalArgumentException("Error: El género ingresado no es válido. Por favor, ingrese 'masculino' o 'femenino'.");
+        }
+        this.genero = genero;
+    }
 // Getters y setters
     public String getNombre() {
         return nombre;
@@ -127,10 +134,6 @@ public void editarEmpleado() {
 
     public String getGenero() {
         return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
     }
 
     public double getSalario() {
