@@ -1,6 +1,6 @@
 package com.mycompany.main;
 
-import java.util.Scanner;
+
 import java.util.Scanner;
 
 public class Mesa {
@@ -84,7 +84,3 @@ public class Mesa {
         this.capacidad = capacidad;
     }
 }
-
-   
-
-   
