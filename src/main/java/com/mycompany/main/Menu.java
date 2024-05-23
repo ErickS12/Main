@@ -1,11 +1,12 @@
 package com.mycompany.main;
 
+import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Menu {
     private final List<Combo> combos;
+    private final String archivoCombos = "combos.txt"; // Nombre del archivo para guardar los combos
 
     public Menu() {
         this.combos = new ArrayList<>();
@@ -21,8 +22,12 @@ public class Menu {
         Combo combo = new Combo(nombre, precio);
         combos.add(combo);
         System.out.println("El combo se ha agregado al menú.");
+
+        // Guardar el combo en el archivo
+        Archivo.escribirEnArchivo(archivoCombos, combo.toString());
     }
 
+    // Método para obtener el precio del combo
     private double obtenerPrecioCombo(Scanner scanner) {
         double precio;
         while (true) {
@@ -58,6 +63,9 @@ public class Menu {
             combo.setNombre(nuevoNombre);
             combo.setPrecio(nuevoPrecio);
             System.out.println("El combo se ha editado correctamente.");
+
+            // Actualizar el archivo con la información del combo editado
+            Archivo.escribirEnArchivo(archivoCombos, combo.toString());
         } else {
             System.out.println("Opción inválida.");
         }
@@ -73,30 +81,4 @@ public class Menu {
             }
         }
     }
-
-    private static class Combo {
-        private String nombre;
-        private double precio;
-
-        public Combo(String nombre, double precio) {
-            this.nombre = nombre;
-            this.precio = precio;
-        }
-
-        public String getNombre() {
-            return nombre;
-        }
-
-        public double getPrecio() {
-            return precio;
-        }
-
-        public void setNombre(String nuevoNombre) {
-            this.nombre = nuevoNombre;
-        }
-
-        public void setPrecio(double nuevoPrecio) {
-            this.precio = nuevoPrecio;
-        }
-    }
-}
+ }
