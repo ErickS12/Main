@@ -1,6 +1,7 @@
 package com.mycompany.main;
 
 import java.util.Scanner;
+import java.util.Scanner;
 
 public class Mesa {
     private int numero;
@@ -19,18 +20,33 @@ public class Mesa {
         System.out.println("Capacidad: " + capacidad + " personas");
     }
 
-    // Método para registrar los datos de una mesa
+    
     public void registrarMesa() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese el número de mesa:");
-        numero = scanner.nextInt();
-        scanner.nextLine(); // Consumir la nueva línea después de nextInt
-        System.out.println("Ingrese el estado de la mesa:");
-        estado = scanner.nextLine();
-        System.out.println("Ingrese la capacidad de la mesa:");
-        capacidad = scanner.nextInt();
+    Scanner scanner = new Scanner(System.in);
+    boolean numeroValido = false;
+
+    while (!numeroValido) {
+        try {
+            System.out.println("Ingrese el número de mesa:");
+            String numeroMesaStr = scanner.nextLine();
+            if (!numeroMesaStr.matches("\\d+")) { // Verifica si la cadena contiene solo dígitos
+                throw new IllegalArgumentException("Error: El número de mesa debe ser un número.");
+            }
+            numero = Integer.parseInt(numeroMesaStr);
+            numeroValido = true; // El número es válido, salimos del bucle
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Por favor, ingrese un número válido para el número de mesa.");
+        }
     }
 
+    System.out.println("Ingrese el estado de la mesa:");
+    estado = scanner.nextLine();
+
+    System.out.println("Ingrese la capacidad de la mesa:");
+    capacidad = scanner.nextInt();
+}
+    
     // Método para editar los datos de una mesa
     public void editarMesa() {
         Scanner scanner = new Scanner(System.in);
@@ -68,3 +84,7 @@ public class Mesa {
         this.capacidad = capacidad;
     }
 }
+
+   
+
+   
