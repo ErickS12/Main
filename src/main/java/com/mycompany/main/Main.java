@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Main {
 
     private final String nombre;
-    private final int telefono;
+    private final String telefono;
     private final List<Mesa> mesas;
     private final List<Empleado> empleados;
     private final Menu menu;
@@ -16,7 +16,7 @@ public class Main {
     private static final int maxCocineros = 4;
     private static final int maxMesas = 5;
 
-    public Main(String nombre, int telefono) {
+    public Main(String nombre, String telefono) {
         this.nombre = nombre;
         this.telefono = telefono;
         this.mesas = new ArrayList<>();
@@ -101,7 +101,7 @@ public class Main {
             System.out.println("Ya se han contratado el número máximo de meseros (" + maxMeseros + ").");
             return;
         }
-        Mesero mesero = new Mesero("", 0, "", 0, "", 0, 0, "", 0);
+        Mesero mesero = new Mesero("", 0, "", 0, "", "", 0, "", 0);
         mesero.registrarMesero();
         empleados.add(mesero);
     }
@@ -112,7 +112,7 @@ public class Main {
             System.out.println("Ya se han contratado el número máximo de cocineros (" + maxCocineros + ").");
             return;
         }
-        Cocinero cocinero = new Cocinero("", 0, "", 0, "", 0, "", "", 0);
+        Cocinero cocinero = new Cocinero("", 0, "", 0, "", "", "", "", 0);
         cocinero.registrarCocinero();
         empleados.add(cocinero);
     }
@@ -225,7 +225,7 @@ public void mostrarMenu() {
 }
 
     public static void main(String[] args) {
-        Main restaurante = new Main("Restaurante Noyolo", 224577391);
+        Main restaurante = new Main("Restaurante Noyolo", "224577391");
         restaurante.mostrarMenu();
     }
 }
