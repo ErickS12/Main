@@ -1,3 +1,4 @@
+
 package com.mycompany.main;
 
 import java.util.Scanner;
@@ -7,7 +8,7 @@ public class Cocinero extends Empleado {
     private String especialidad;
     private float anosDeExperiencia;
 
-    public Cocinero(String nombre, int edad, String genero, double salario, String horario, int numTelefono, String rango, String especialidad, float anosDeExperiencia) {
+    public Cocinero(String nombre, int edad, String genero, double salario, String horario, String numTelefono, String rango, String especialidad, float anosDeExperiencia) {
         super(nombre, edad, genero, salario, horario, numTelefono);
         this.rango = rango;
         this.especialidad = especialidad;
