@@ -1,5 +1,6 @@
 package com.mycompany.main;
 
+
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,4 +82,9 @@ public class Menu {
             }
         }
     }
- }
+
+    // Método para cargar los combos desde el archivo al iniciar el programa
+    public void cargarCombosDesdeArchivo() {
+        Archivo.leerArchivo(archivoCombos);
+    }
+}
