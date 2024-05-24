@@ -1,6 +1,4 @@
 package com.mycompany.main;
-
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -160,3 +158,8 @@ public void editarEmpleado() {
         this.numTelefono = numTelefono;
     }
 }
+
+
+
+        
+
